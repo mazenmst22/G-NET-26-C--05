@@ -1,4 +1,5 @@
 ﻿
+using G_NET_26_C__05;
 using System.Drawing;
 using System.Security.Cryptography;
 
@@ -33,6 +34,48 @@ namespace G_NET_26_CSharp_05
         {
             area = Math.PI * radius * radius;
             circumference = 2 * Math.PI * radius;
+        }
+        #endregion
+        #endregion
+        #region Student grade Manager Methods
+        #region GetGrade 
+        static Grade GetGrade(int score)
+        {
+            if (score >= 90) return Grade.A;
+            if (score >= 80) return Grade.B;
+            if (score >= 70) return Grade.C;
+            if (score >= 60) return Grade.D;
+            return Grade.F;
+        }
+        #endregion
+        #region CalculateAverage 
+        static double CalculateAverage(int[] scores)
+        {
+            double sum = 0;
+            for (int i = 0; i < scores.Length; i++)
+            {
+                sum += scores[i];
+            }
+            return sum / scores.Length;
+        }
+        #endregion
+        #region GetMinMax
+        static void GetMinMax(int[] scores, out int min, out int max)
+        {
+            min = scores[0];
+            max = scores[0];
+
+            for (int i = 1; i < scores.Length; i++)
+            {
+                if (scores[i] < min)
+                {
+                    min = scores[i];
+                }
+                if (scores[i] > max )
+                {
+                    max = scores[i];
+                }
+            }
         }
         #endregion
         #endregion
@@ -214,6 +257,33 @@ namespace G_NET_26_CSharp_05
             Console.WriteLine($"Area: {area:F3}");
             Console.WriteLine($"Circumference: {circumference:F3}");
             #endregion
+            #endregion
+            #region Student Grade Manager
+            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            int[] scores = new int[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Enter score for Student {i + 1}: ");
+                scores[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("--- Report ---");
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine($"Student {i + 1}: {scores[i]} -> Grade: {GetGrade(scores[i])}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Average: {CalculateAverage(scores):F1}");
+
+            GetMinMax(scores, out int min2, out int max2);
+            Console.WriteLine($"Highest Score: {max2}");
+            Console.WriteLine($"Lowest Score: {min2}");
 
             #endregion
 
