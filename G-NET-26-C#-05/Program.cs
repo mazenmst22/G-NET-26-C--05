@@ -7,6 +7,7 @@ namespace G_NET_26_CSharp_05
     public class Program
     {
         #region Part 3 Methods
+        #region Q1
         static double Add(double a, double b)
         {
             return a + b;
@@ -26,7 +27,15 @@ namespace G_NET_26_CSharp_05
         {
             return a / b;
         }
-        #endregion 
+        #endregion
+        #region Q2
+        static void CalculateCircle(double radius, out double area, out double circumference)
+        {
+            area = Math.PI * radius * radius;
+            circumference = 2 * Math.PI * radius;
+        }
+        #endregion
+        #endregion
         public static void Main(string[] args)
         {
             #region Part 1
@@ -190,6 +199,22 @@ namespace G_NET_26_CSharp_05
                     break;
             }
             #endregion
+            #region Q2
+            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            Console.Write("Enter radius to calculate: ");
+            string radInput = Console.ReadLine();
+
+            double radius = Convert.ToDouble(radInput);
+
+            CalculateCircle(radius, out double area, out double circumference);
+
+            Console.WriteLine($"Radius: {radius}");
+            Console.WriteLine($"Area: {area:F3}");
+            Console.WriteLine($"Circumference: {circumference:F3}");
+            #endregion
+
             #endregion
 
         }
