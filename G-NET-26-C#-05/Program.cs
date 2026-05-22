@@ -32,14 +32,15 @@ namespace G_NET_26_CSharp_05
                     default:
                         Console.WriteLine("Invalid day range.");
                         break;
-                    }
                 }
-                else
-                {
-                    Console.WriteLine("Invalid input.");
-                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.");
+            }
             #endregion
             #region Part 2
+            #region Q1
             Console.WriteLine();
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine();
@@ -53,7 +54,7 @@ namespace G_NET_26_CSharp_05
                     numbers[i] = int.Parse(Console.ReadLine());
                 }
                 Console.WriteLine();
-                int sum = 0,min = numbers[0], max = numbers[0];
+                int sum = 0, min = numbers[0], max = numbers[0];
                 for (int i = 0; i < Size; i++)
                 {
                     sum += numbers[i];
@@ -92,6 +93,37 @@ namespace G_NET_26_CSharp_05
                 Console.WriteLine("Invalid input. Please enter a valid integer.");
             }
             #endregion
+            #region Q2
+            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            double[,] grades = new double[3, 4];
+            double totalClassSum = 0;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"Enter Grades for Student: {i + 1}:");
+                double studentSum = 0;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write($"Subject {j + 1}: ");
+                    grades[i, j] = Convert.ToDouble(Console.ReadLine());
+                    studentSum += grades[i, j];
+                    totalClassSum += grades[i, j];
+                }
+
+                double studentAverage = studentSum / 4;
+                Console.WriteLine($"Student {i + 1} Average: {studentAverage:F2}\n");
+            }
+
+            double classAverage = totalClassSum / 12.0;
+            Console.WriteLine($"Overall Class Average: {classAverage:F2}");
+        
+    
+            #endregion
+            #endregion
+
         }
     }
 }
