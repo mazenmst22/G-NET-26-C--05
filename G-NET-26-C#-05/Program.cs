@@ -6,6 +6,27 @@ namespace G_NET_26_CSharp_05
 {
     public class Program
     {
+        #region Part 3 Methods
+        static double Add(double a, double b)
+        {
+            return a + b;
+        }
+
+        static double Subtract(double a, double b)
+        {
+            return a - b;
+        }
+
+        static double Multiply(double a, double b)
+        {
+            return a * b;
+        }
+
+        static double Divide(double a, double b)
+        {
+            return a / b;
+        }
+        #endregion 
         public static void Main(string[] args)
         {
             #region Part 1
@@ -119,8 +140,55 @@ namespace G_NET_26_CSharp_05
 
             double classAverage = totalClassSum / 12.0;
             Console.WriteLine($"Overall Class Average: {classAverage:F2}");
-        
-    
+
+
+            #endregion
+            #endregion
+            #region Part 3
+            #region Q1
+            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+
+            Console.Write("Enter first number: ");
+
+            string input1 = Console.ReadLine();
+            double num1 = Convert.ToDouble(input1);
+
+            Console.Write("Enter second number: ");
+
+            string input2 = Console.ReadLine();
+            double num2 = Convert.ToDouble(input2);
+
+            Console.Write("Enter operation (+, -, *, /): ");
+
+            string operation = Console.ReadLine();
+
+            switch (operation)
+            {
+                case "+":
+                    Console.WriteLine(Add(num1, num2));
+                    break;
+                case "-":
+                    Console.WriteLine(Subtract(num1, num2));
+                    break;
+                case "*":
+                    Console.WriteLine(Multiply(num1, num2));
+                    break;
+                case "/":
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Cannot divide by zero.");
+                    }
+                    else
+                    {
+                        Console.WriteLine(Divide(num1, num2));
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid operation.");
+                    break;
+            }
             #endregion
             #endregion
 
