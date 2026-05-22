@@ -1,4 +1,7 @@
 ﻿
+using System.Drawing;
+using System.Security.Cryptography;
+
 namespace G_NET_26_CSharp_05
 {
     public class Program
@@ -35,6 +38,59 @@ namespace G_NET_26_CSharp_05
                 {
                     Console.WriteLine("Invalid input.");
                 }
+            #endregion
+            #region Part 2
+            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+            Console.Write("Enter array size: ");
+            if (int.TryParse(Console.ReadLine(), out int Size) && Size > 0)
+            {
+                var numbers = new int[Size];
+                for (int i = 0; i < Size; i++)
+                {
+                    Console.Write($"Enter element [{i}]: ");
+                    numbers[i] = int.Parse(Console.ReadLine());
+                }
+                Console.WriteLine();
+                int sum = 0,min = numbers[0], max = numbers[0];
+                for (int i = 0; i < Size; i++)
+                {
+                    sum += numbers[i];
+
+                    if (numbers[i] > max)
+                    {
+                        max = numbers[i];
+                    }
+
+                    if (numbers[i] < min)
+                    {
+                        min = numbers[i];
+                    }
+                }
+
+                double average = (double)sum / Size;
+                Console.WriteLine($"Sum     = {sum}");
+                Console.WriteLine($"Average = {average}");
+                Console.WriteLine($"Max     = {max}");
+                Console.WriteLine($"Min     = {min}");
+
+                Console.Write("Reverse = ");
+                for (int i = Size - 1; i >= 0; i--)
+                {
+                    Console.Write(numbers[i]);
+                    if (i > 0)
+                    {
+                        Console.Write(", ");
+                    }
+                }
+                Console.WriteLine();
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+            }
             #endregion
         }
     }
